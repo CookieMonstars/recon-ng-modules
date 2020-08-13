@@ -41,7 +41,6 @@ class Module(BaseModule):
 
                     (first_name, middle_name, last_name) = self.parse_name(officer['name'])
                     contact = {
-                        'country': officer['country_of_residence'],
                         'first_name': first_name,
                         'middle_name': middle_name,
                         'last_name': last_name,
@@ -49,6 +48,8 @@ class Module(BaseModule):
                     }
 
                     if 'address' in officer:
+                        if 'country' in officer['address']:
+                            contact['country'] = officer['address']['country']
                         if 'region' in officer['address']:
                             contact['region'] = officer['address']['region']
                         elif 'locality' in officer['address']:
