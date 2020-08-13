@@ -1,9 +1,6 @@
-# module required for framework integration
 from recon.core.module import BaseModule
-# mixins for desired functionality
 from recon.mixins.resolver import ResolverMixin
 from recon.mixins.threads import ThreadingMixin
-# module specific imports
 import instaloader
 
 class Module(BaseModule, ResolverMixin, ThreadingMixin):
