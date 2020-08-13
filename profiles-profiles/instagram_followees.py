@@ -1,9 +1,6 @@
-# module required for framework integration
 from recon.core.module import BaseModule
-# mixins for desired functionality
 from recon.mixins.resolver import ResolverMixin
 from recon.mixins.threads import ThreadingMixin
-# module specific imports
 import instaloader
 
 class Module(BaseModule, ResolverMixin, ThreadingMixin):
@@ -21,9 +18,6 @@ class Module(BaseModule, ResolverMixin, ThreadingMixin):
         'query': "SELECT DISTINCT username FROM profiles WHERE username IS NOT NULL AND resource LIKE 'Instagram' COLLATE NOCASE",
     }
 
-    # mandatory method
-    # the second parameter is required to capture the result of the "SOURCE" option, which means that it is only required if "query" is defined within "meta"
-    # the third parameter is required if a value is returned from the "module_pre" method
     def module_run(self, usernames):
         account = self.keys.get('instagram_account')
         L = instaloader.Instaloader()
